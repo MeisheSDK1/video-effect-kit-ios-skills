@@ -1,0 +1,473 @@
+{
+  "schema_version": 2,
+  "baseline": {
+    "sdk_marketing_version": "3.16.1",
+    "resource_version": "3.16.1.2",
+    "nve_bundle_short_version": "1.0",
+    "source_priority": [
+      "public_headers_and_actual_resources",
+      "demo_implementation",
+      "local_and_official_documentation",
+      "engineering_inference"
+    ]
+  },
+  "distribution": {
+    "knowledge_only": true,
+    "contains_frameworks": false,
+    "contains_models": false,
+    "contains_effect_packages": false,
+    "contains_licenses": false
+  },
+  "platform": {
+    "minimum_ios": "12.0",
+    "nve_supported_platforms_observed": ["iPhoneOS"],
+    "device_families_observed": [1, 2],
+    "simulator_support_observed": false,
+    "render_texture_api": "OpenGL ES"
+  },
+  "sdk_variants": [
+    {
+      "core_module": "NvEffectSdkCore",
+      "requirement": "Use the NveEffectKit binary built by the vendor for NvEffectSdkCore."
+    },
+    {
+      "core_module": "NvStreamingSdkCore",
+      "requirement": "Use the NveEffectKit binary built by the vendor for NvStreamingSdkCore."
+    }
+  ],
+  "feature_ids": [
+    "beauty",
+    "beauty-advanced",
+    "beauty-lut",
+    "shape",
+    "micro-shape",
+    "micro-shape-package",
+    "makeup",
+    "makeup-eyeball",
+    "compose-makeup",
+    "filter-builtin",
+    "filter-package",
+    "face-prop",
+    "segmentation",
+    "custom-effect-animated-sticker"
+  ],
+  "feature_bundles": {
+    "beauty-skin-suite": [
+      "beauty",
+      "beauty-advanced"
+    ],
+    "beauty-suite": [
+      "beauty-skin-suite",
+      "shape",
+      "micro-shape-package"
+    ],
+    "makeup-suite": [
+      "makeup",
+      "makeup-eyeball",
+      "compose-makeup"
+    ]
+  },
+  "feature_model_requirements": {
+    "beauty": ["face", "faceCommon"],
+    "beauty-advanced": ["face", "faceCommon", "advancedBeauty"],
+    "beauty-lut": ["face", "faceCommon"],
+    "shape": ["face", "faceCommon"],
+    "micro-shape": ["face", "faceCommon"],
+    "micro-shape-package": ["face", "faceCommon"],
+    "makeup": ["face", "faceCommon"],
+    "makeup-eyeball": ["face", "faceCommon", "eyeball"],
+    "compose-makeup": ["face", "faceCommon"],
+    "filter-builtin": [],
+    "filter-package": [],
+    "face-prop": ["face", "faceCommon"],
+    "segmentation": ["background"],
+    "custom-effect-animated-sticker": []
+  },
+  "feature_package_requirements": {
+    "beauty-lut": [[".mslut"]],
+    "shape": [[".facemesh"]],
+    "micro-shape-package": [[".facemesh"], [".warp"]],
+    "makeup": [[".makeup"]],
+    "makeup-eyeball": [[".makeup"]],
+    "filter-package": [[".videofx"]],
+    "face-prop": [[".arscene"]],
+    "custom-effect-animated-sticker": [[".animatedsticker"]]
+  },
+  "beauty_control_requirements": {
+    "strength-basic": {
+      "aliases": ["磨皮", "基础磨皮", "普通磨皮"],
+      "profiles": ["beauty"]
+    },
+    "strength-advanced": {
+      "aliases": ["高级磨皮", "GAN磨皮", "AI磨皮"],
+      "profiles": ["beauty-advanced"]
+    },
+    "whitening-standard": {
+      "aliases": ["美白", "普通美白", "美白A"],
+      "profiles": ["beauty"]
+    },
+    "whitening-lut": {
+      "aliases": ["LUT美白", "美白B"],
+      "profiles": ["beauty-lut"]
+    },
+    "reddening": {
+      "aliases": ["红润"],
+      "profiles": ["beauty"]
+    },
+    "matte": {
+      "aliases": ["去油光"],
+      "profiles": ["beauty"]
+    },
+    "removeNasolabialFolds": {
+      "aliases": ["法令纹", "淡化法令纹"],
+      "profiles": ["beauty-advanced"]
+    },
+    "removeDarkCircles": {
+      "aliases": ["黑眼圈", "淡化黑眼圈"],
+      "profiles": ["beauty-advanced"]
+    },
+    "brightenEyes": {
+      "aliases": ["亮眼"],
+      "profiles": ["beauty-advanced"]
+    },
+    "whitenTeeth": {
+      "aliases": ["美牙", "白牙"],
+      "profiles": ["beauty-advanced"]
+    },
+    "sharpen": {
+      "aliases": ["锐化", "锐度"],
+      "profiles": ["beauty"]
+    },
+    "definition": {
+      "aliases": ["清晰度"],
+      "profiles": ["beauty"]
+    },
+    "faceWidth": {"aliases": ["窄脸"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "faceLength": {"aliases": ["小脸"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "faceSize": {"aliases": ["瘦脸"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "foreheadHeight": {"aliases": ["额头"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "chinLength": {"aliases": ["下巴"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "eyeSize": {"aliases": ["大眼"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "eyeCornerStretch": {"aliases": ["眼角"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "noseWidth": {"aliases": ["瘦鼻"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "noseLength": {"aliases": ["长鼻", "鼻长"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "mouthSize": {"aliases": ["嘴型"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "mouthCornerLift": {"aliases": ["嘴角"], "profiles": ["shape"], "package_extensions": [".facemesh"]},
+    "headSize": {"aliases": ["缩头"], "profiles": ["micro-shape-package"], "package_extensions": [".warp"]},
+    "malarWidth": {"aliases": ["颧骨"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "jawWidth": {"aliases": ["下颌"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "templeWidth": {"aliases": ["太阳穴"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeDistance": {"aliases": ["眼距"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeAngle": {"aliases": ["眼角度"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "philtrumLength": {"aliases": ["人中"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "noseBridgeWidth": {"aliases": ["宽鼻梁"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "noseHeadWidth": {"aliases": ["鼻头"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyebrowThickness": {"aliases": ["眉粗细"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyebrowAngle": {"aliases": ["眉角度"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyebrowXOffset": {"aliases": ["眉间距"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyebrowYOffset": {"aliases": ["眉上下"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeWidth": {"aliases": ["眼宽度"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeHeight": {"aliases": ["眼高度"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeArc": {"aliases": ["眼弧度"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]},
+    "eyeYOffset": {"aliases": ["眼上下"], "profiles": ["micro-shape-package"], "package_extensions": [".facemesh"]}
+  },
+  "asset_capability_models": {
+    "none": [],
+    "face": ["face", "faceCommon"],
+    "fake-face": ["fakeFace"],
+    "avatar": ["avatar"],
+    "eyeball": ["eyeball"],
+    "background": ["background"],
+    "hand": ["hand"],
+    "advanced-beauty": ["face", "faceCommon", "advancedBeauty"]
+  },
+  "demo_model_initializers": [
+    {"enum": "NveDetectionModelType_face", "files": ["ms_face240_v4.0.3.next.model"]},
+    {"enum": "NveDetectionModelType_fakeFace", "files": ["fakeface_v1.0.1.dat"]},
+    {"enum": "NveDetectionModelType_avatar", "files": ["ms_avatar_v2.0.0.next.model"]},
+    {"enum": "NveDetectionModelType_eyeball", "files": ["ms_eyecontour_v2.0.0.next.model"]},
+    {"enum": "NveDetectionModelType_background", "files": ["ms_humansegment_medium_v2.0.0.next.model", "ms_humansegment_small_v2.0.0.next.model"]},
+    {"enum": "NveDetectionModelType_hand", "files": ["ms_hand_common_v2.0.0.next.model"]},
+    {"enum": "NveDetectionModelType_faceCommon", "files": ["facecommon_v1.0.1.dat"]},
+    {"enum": "NveDetectionModelType_advancedBeauty", "files": ["advancedbeauty_v1.0.1.dat"]}
+  ],
+  "demo_model_initializer_sources": [
+    "samples/ios/NvEffectModule/NvEffectModule/SourceFiles/NvEffectModule/NvLiveEffectModule.m"
+  ],
+  "render_modes": {
+    "buffer-buffer": {
+      "enum": "NveRenderMode_buffer_buffer",
+      "required_input": "NveRenderInput.imageBuffer.pixelBuffer",
+      "output": "NveRenderOutput.pixelBuffer"
+    },
+    "buffer-texture": {
+      "enum": "NveRenderMode_buffer_texture",
+      "required_input": "NveRenderInput.imageBuffer.pixelBuffer",
+      "output": "NveRenderOutput.texture"
+    },
+    "texture-texture": {
+      "enum": "NveRenderMode_texture_texture",
+      "required_input": "NveRenderInput.texture",
+      "output": "NveRenderOutput.texture"
+    }
+  },
+  "pixel_formats": [
+    "NvePixelFormatType_none",
+    "NvePixelFormatType_bgra",
+    "NvePixelFormatType_nv12",
+    "NvePixelFormatType_yuv420"
+  ],
+  "models": [
+    {
+      "type": "face",
+      "enum": "NveDetectionModelType_face",
+      "file": "ms_face240_v4.0.3.next.model"
+    },
+    {
+      "type": "fakeFace",
+      "enum": "NveDetectionModelType_fakeFace",
+      "file": "fakeface_v1.0.1.dat"
+    },
+    {
+      "type": "avatar",
+      "enum": "NveDetectionModelType_avatar",
+      "file": "ms_avatar_v2.0.0.next.model"
+    },
+    {
+      "type": "eyeball",
+      "enum": "NveDetectionModelType_eyeball",
+      "file": "ms_eyecontour_v2.0.0.next.model"
+    },
+    {
+      "type": "background-medium",
+      "enum": "NveDetectionModelType_background",
+      "file": "ms_humansegment_medium_v2.0.0.next.model"
+    },
+    {
+      "type": "background-small",
+      "enum": "NveDetectionModelType_background",
+      "file": "ms_humansegment_small_v2.0.0.next.model"
+    },
+    {
+      "type": "hand",
+      "enum": "NveDetectionModelType_hand",
+      "file": "ms_hand_common_v2.0.0.next.model"
+    },
+    {
+      "type": "faceCommon",
+      "enum": "NveDetectionModelType_faceCommon",
+      "file": "facecommon_v1.0.1.dat"
+    },
+    {
+      "type": "advancedBeauty",
+      "enum": "NveDetectionModelType_advancedBeauty",
+      "file": "advancedbeauty_v1.0.1.dat"
+    }
+  ],
+  "unmapped_resource_files": [
+    {
+      "file": "ms_skysegment_v1.0.5.next.model",
+      "reason": "Present in resources but no matching NveDetectionModelType or demo initialization was observed."
+    }
+  ],
+  "asset_package_types": {
+    ".videofx": "NvsAssetPackageType_VideoFx",
+    ".arscene": "NvsAssetPackageType_ARScene",
+    ".makeup": "NvsAssetPackageType_Makeup",
+    ".facemesh": "NvsAssetPackageType_FaceMesh",
+    ".warp": "NvsAssetPackageType_Warp",
+    ".animatedsticker": "NvsAssetPackageType_AnimatedSticker"
+  },
+  "asset_install_success_codes": [
+    "NvsAssetPackageManagerError_NoError",
+    "NvsAssetPackageManagerError_AlreadyInstalled"
+  ],
+  "effects": {
+    "beauty": {
+      "class": "NveBeauty",
+      "range": [0.0, 1.0],
+      "header_default": 0.0,
+      "properties": [
+        "strength",
+        "whitening",
+        "reddening",
+        "matte",
+        "removeNasolabialFolds",
+        "removeDarkCircles",
+        "brightenEyes",
+        "whitenTeeth",
+        "sharpen",
+        "definition"
+      ],
+      "advanced_parameter_keys": [
+        "Whitening Lut Enabled",
+        "Whitening Lut File",
+        "Beauty Strength",
+        "Advanced Beauty Enable",
+        "Advanced Beauty Type",
+        "Advanced Beauty Intensity"
+      ],
+      "advanced_types_observed": [0, 1, 2, 3]
+    },
+    "shape": {
+      "class": "NveShape",
+      "range": [-1.0, 1.0],
+      "header_default": 0.0,
+      "properties": [
+        "faceWidth",
+        "faceLength",
+        "faceSize",
+        "foreheadHeight",
+        "chinLength",
+        "eyeSize",
+        "eyeCornerStretch",
+        "noseWidth",
+        "noseLength",
+        "mouthSize",
+        "mouthCornerLift"
+      ],
+      "package_type": "NvsAssetPackageType_FaceMesh"
+    },
+    "micro-shape": {
+      "class": "NveMicroShape",
+      "range": [-1.0, 1.0],
+      "header_default": 0.0,
+      "properties": [
+        "headSize",
+        "malarWidth",
+        "jawWidth",
+        "templeWidth",
+        "eyeDistance",
+        "eyeAngle",
+        "philtrumLength",
+        "noseBridgeWidth",
+        "noseHeadWidth",
+        "eyebrowThickness",
+        "eyebrowAngle",
+        "eyebrowXOffset",
+        "eyebrowYOffset",
+        "eyeWidth",
+        "eyeHeight",
+        "eyeArc",
+        "eyeYOffset"
+      ],
+      "package_types": [
+        "NvsAssetPackageType_FaceMesh",
+        "NvsAssetPackageType_Warp"
+      ]
+    },
+    "makeup": {
+      "class": "NveMakeup",
+      "range": [0.0, 1.0],
+      "header_default": 1.0,
+      "properties": [
+        "lip",
+        "eyeshadow",
+        "eyebrow",
+        "eyelash",
+        "eyeliner",
+        "blusher",
+        "brighten",
+        "shadow",
+        "eyeball"
+      ],
+      "package_type": "NvsAssetPackageType_Makeup"
+    },
+    "compose-makeup": {
+      "class": "NveComposeMakeup",
+      "input": "unpacked_directory",
+      "intensity_range": [0.0, 1.0]
+    },
+    "filter": {
+      "class": "NveFilter",
+      "intensity_range": [0.0, 1.0],
+      "header_default": 1.0,
+      "post_container": "filterContainer",
+      "pre_container": "rawFilterContainer"
+    },
+    "face-prop": {
+      "class": "NveFaceProp",
+      "package_type": "NvsAssetPackageType_ARScene"
+    },
+    "segmentation": {
+      "effect_id": "Segmentation Background Fill",
+      "container": "rawFilterContainer",
+      "parameter_types": {
+        "Segment Type": "NveParamType_MenuVal",
+        "Stretch Mode": "NveParamType_int",
+        "Detect Interval": "NveParamType_int",
+        "Tex File Path": "NveParamType_string"
+      }
+    },
+    "custom-effect-animated-sticker": {
+      "class": "NvsVideoEffect",
+      "package_type": "NvsAssetPackageType_AnimatedSticker",
+      "owner": "NveEffectKit.customEffectArray",
+      "demo_status": "commented_example"
+    }
+  },
+  "render_errors": [
+    "NveRenderError_noError",
+    "NveRenderError_unknown",
+    "NveRenderError_invalidTexture",
+    "NveRenderError_invalidPixelFormat",
+    "NveRenderError_inputParam"
+  ],
+  "known_source_issues": [
+    "Documentation references obsolete model file names.",
+    "Documentation initializes facecommon with the face enum and later repeats it with faceCommon.",
+    "Documentation assigns the beauty variable to the shape property.",
+    "Demo deployment target is lower than the NveEffectKit MinimumOSVersion.",
+    "beautyEffect.json and beautyEffect_gan.json contain trailing commas.",
+    "Some demo installers accept NoError but reject AlreadyInstalled.",
+    "Demo micro-shape restore and enable paths reference the shape object.",
+    "Demo does not establish a general renderTimestamp unit.",
+    "Texture rendering modes are declared but not fully exercised by the primary capture demo."
+  ],
+  "fingerprints": [
+    {
+      "path_suffix": "samples/ios/NvEffectModule/version.txt",
+      "sha256": "f3f1c96620f11359902cb6a11d2c90a02c6f93e5268bca2ab673cdba60a36f7f"
+    },
+    {
+      "path_suffix": "lib/ios/NveEffectKit.framework/Headers/NveEffectKit.h",
+      "sha256": "a03831727c8d55b69bd42d1b5cc3ea87a6c630448ea914ce440a45ec6b7ff33d"
+    },
+    {
+      "path_suffix": "lib/ios/NveEffectKit.framework/Headers/NveRenderConfig.h",
+      "sha256": "d9895377a740ce5348cb05425067d28a68c2b8362dfac57890fed5b5929e4d4c"
+    },
+    {
+      "path_suffix": "lib/ios/NveEffectKit.framework/Headers/NveRenderInput.h",
+      "sha256": "3d8587dbcada3500621092a0bdecf192452ebc2d02ba17cb092cf8d6731a8729"
+    },
+    {
+      "path_suffix": "lib/ios/NveEffectKit.framework/Headers/NveRenderOutput.h",
+      "sha256": "5632828f7350c767bd3d323a35874f5517958d0a34ed67733ed8cea77a28b683"
+    },
+    {
+      "path_suffix": "samples/ios/NvEffectModule/NvEffectModule/SourceFiles/NvEffectModule/NvLiveEffectModule.m",
+      "sha256": "8b8c8dbcff50be513e941b402c82b616fd7bd6ed8ab8bb8b95434379ba0e24b4"
+    },
+    {
+      "path_suffix": "samples/ios/NvEffectModule/NvEffectModule/Resources/beautyJson.bundle/beautyShape.json",
+      "sha256": "a1a3e1fdd1e12dc64ce3f97e544480c40b5fb28d6c1cbc0bebb2d51873182fa1"
+    },
+    {
+      "path_suffix": "samples/ios/NvEffectModule/NvEffectModule/Resources/beautyJson.bundle/beautyMicro.json",
+      "sha256": "6f531023a6981dbbb2034094eacd7cbdef8830d30a3262ed70e5f4076124dce8"
+    },
+    {
+      "path_suffix": "samples/ios/NvEffectModule/NvEffectModule/Resources/filter.bundle/filter.json",
+      "sha256": "cc063243e9ced2ed0b9567283f9870805d5923cb3cc885758a6fa211917e227f"
+    },
+    {
+      "path_suffix": "samples/ios/NvEffectModule/NvEffectModule/Resources/prop.bundle/prop.json",
+      "sha256": "c6df7ba8c042fde0f09f5614e8d57b5e1322bcdcaef2ba544533222fc080d85a"
+    },
+    {
+      "path_suffix": "NveEffectKit接入文档/NveEffectKit 接入文档.md",
+      "sha256": "60bc25169bfb45f59a1662c627641ea6da975cfb61e1363bcfc309ec969a68f7"
+    }
+  ]
+}
